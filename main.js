@@ -18,7 +18,7 @@ function generateNum() {
 
     // Define probability thresholds for each outcome within the range [min, max)
     const thresholds = [
-        { value: 195, outcome: 1, chance: '15' },   // Probability of getting 1: 15% 
+        { value: 100, outcome: 1, chance: '15' },   // Probability of getting 1: 15% 
         { value: 390, outcome: 2, chance: '15' },   // Probability of getting 2: 15% 
         { value: 585, outcome: 3, chance: '15' },   // Probability of getting 3: 15% 
         { value: 780, outcome: 4, chance: '15' },   // Probability of getting 4: 15%
