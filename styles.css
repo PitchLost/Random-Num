@@ -1,0 +1,25 @@
+body { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#content { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#Generated-Number { 
+    font-size: 20mm;
+}
+button { 
+    margin-bottom: 2em;
+    height: 4em;
+    width: 20em;
+}
+#logic { 
+    margin-left: 15vw;
+    margin-right: 15vw;
+}
