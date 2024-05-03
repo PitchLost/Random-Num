@@ -10,18 +10,6 @@ let logic = ''
 let chance = ''
 let prev_nums = []
    // Define probability thresholds for each outcome within the range [min, max)
-   const thresholds = [
-    { value: 100, outcome: 1, chance: '15' },   // Probability of getting 1: 15% 
-    { value: 390, outcome: 2, chance: '15' },   // Probability of getting 2: 15% 
-    { value: 585, outcome: 3, chance: '15' },   // Probability of getting 3: 15% 
-    { value: 780, outcome: 4, chance: '15' },   // Probability of getting 4: 15%
-    { value: 975, outcome: 5, chance: '15' },   // Probability of getting 5: 15%
-    { value: 1105, outcome: 6, chance: '5' },  // Probability of getting 6: 5%
-    { value: 1227, outcome: 7, chance: '2' },  // Probability of getting 7: 2% 
-    { value: 1260, outcome: 8, chance: '1' },  // Probability of getting 8: 1% 
-    { value: 1295, outcome: 9, chance: '1' },  // Probability of getting 9: 1% 
-    { value: 1300, outcome: 10, chance: '1' }  // Probability of getting 10: 1% 
-];
 
 button.addEventListener('click', () => {
     generateNum();
