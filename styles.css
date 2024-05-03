@@ -3,6 +3,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    flex-wrap: wrap;
 }
 
 #content { 
@@ -22,4 +23,18 @@ button {
 #logic { 
     margin-left: 15vw;
     margin-right: 15vw;
+}
+#prev-nums { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    height: auto;
+    max-height: fit-content;
+    width: auto;
+    max-width: 70vw;
+    font-size: 8mm;
+    background-color: red;
 }
