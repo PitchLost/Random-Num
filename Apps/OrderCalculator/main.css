@@ -1,0 +1,34 @@
+.logo { 
+    top: 5vh;
+}
+
+.top { 
+    height: auto;
+    max-height: fit-content;
+    margin-bottom: 10vh;
+}
+
+#prev-calcs { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border-top-style: solid;
+    height: auto;
+    min-height: 60vh;
+    max-height: fit-content;
+    width: 100vw;
+    flex-wrap: wrap;
+}
+#prev-calcs div { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 10vh;
+    width: 10vw;
+    background-color: beige;
+    margin-right: 2em;
+    margin-bottom: 1em;
+    flex-wrap: wrap;
+}
