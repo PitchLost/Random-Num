@@ -1,5 +1,5 @@
 const min = 1;
-const max = 1300;
+const max = 1000;
 let seed = 0;
 let num = 0;
 const button = document.getElementById('generate-button');
@@ -9,11 +9,17 @@ let prev_nums_dom = document.getElementById('prev-nums')
 let logic = ''
 let chance = ''
 let prev_nums = []
+const clear_btn = document.getElementById('clear')
    // Define probability thresholds for each outcome within the range [min, max)
 
 button.addEventListener('click', () => {
     generateNum();
 });
+
+clear_btn.addEventListener('click',_ => { 
+    prev_nums = []
+    setDisplays()
+})
 
 function generateNum() {
     seed = Math.random() * (max - min) + min; // Generate a seed within the range [min, max)
@@ -29,6 +35,11 @@ function generateNum() {
         num = Math.random() * (local_max - local_min) + local_min;
         chance = '15%'
     }
+    setDisplays()
+}
+
+
+function setDisplays() { 
     num = Math.ceil(num)
     // Set the text display on the page
     num_display.innerHTML = parseFloat('.' + num)
@@ -39,5 +50,4 @@ function generateNum() {
     logic_display.innerHTML = logic
     prev_nums.push(JSON.stringify(num))
     prev_nums_dom.innerHTML = prev_nums
-
 }
