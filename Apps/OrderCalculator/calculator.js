@@ -109,6 +109,6 @@ function calculate() {
   }
   
   function combineFunction(num) {
-    console.log(num);
+    console.log('Passed Num =',num);
   }
   }}  
