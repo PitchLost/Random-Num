@@ -24,13 +24,9 @@ const calcForm = document.getElementById('calcForm')
 // Text Box:
 let textBox = document.getElementById('text-box')
 let textBoxValue = textBox.value;
-
-
-
 // Add a running total for the calculation: 
 let new_calc = 0
-
-textBoxValue = new_calc
+textBoxValue = new_calc;
 
 // Operators: 
 
@@ -54,6 +50,9 @@ const del = document.getElementById('delete')
 const prev_calcs = document.getElementById('prev-calcs') // Get the previous calculations HTML div
 const nameBox = document.getElementById('name-box')
 
+
+let combineNums = []
+
 // Add a number to the text box
 
 // Prevent Defualt Submission
@@ -68,47 +67,46 @@ function add_number(element) {
 
 // Function to calculate the equation: 
 
-function calculate() { 
+// Function to calculate the equation
+function calculate() {
+  if (textBox.value === '' || nameBox.value === '') {
+    alert('Please fill out all the boxes');
+    return;
+  }
 
-  if (textBox.value == '' || nameBox.value == '') { 
-    alert('Please fill out all the boxes')
-  } else { 
+  let answer = eval(textBox.value);
+  let label = nameBox.value;
 
+  // Create new elements for the calculation result
+  let newObject = document.createElement('div');
+  let labelObject = document.createElement('strong');
+  labelObject.textContent = label;
+  let valueObject = document.createElement('p');
+  valueObject.textContent = answer;
 
-  let answer = eval(textBox.value) // Get the answer of the equation
-  let label = nameBox.value
-
-
-  // Log the answers
-  console.log(answer)
-  console.log(label)
-
-  // Prepare the HTML object
-  let newObject = document.createElement('div') 
-  let labelObject = document.createElement('strong')
-  labelObject.innerHTML = label
-  let valueObject =  document.createElement('p')
-  valueObject.innerHTML = answer
-  newObject.append(labelObject)
-  newObject.append(valueObject)
+  newObject.append(labelObject);
+  newObject.append(valueObject);
   newObject.classList.add('addedDivs');
-  prev_calcs.append(newObject)
+  prev_calcs.append(newObject);
 
+  // Add event listener to the new calculation result
+  newObject.addEventListener('click', function() {
+    combineFunction(answer); // Pass the answer as an argument to combineFunction
+    console.log('Current Item:', newObject); // Log the clicked element
+  });
+}
 
-  let allDivs = document.querySelectorAll('.addedDivs'); // Use '.' before class name
-  console.log(allDivs);
-  
-  for (let i = 0; i < allDivs.length; i++) {
-    // Use an immediately invoked function expression (IIFE) to capture the current value of `i`
-    (function(index) {
-      allDivs[index].addEventListener('click', function() {
-        combineFunction(5);
-        console.log('Current Item:',allDivs[index]); // Access the correct element using the captured index
-      });
-    })(i); // Pass `i` to the IIFE to capture its value
+// Function to handle click on a calculation result
+function combineFunction(num) {
+  console.log('Passed Num =', num);
+  combineNums.push(num)
+}
+
+function combineTotal() { 
+  console.log(combineNums)
+  total = 0 
+  for (let k = 0; k < combineNums.length; k++) { 
+    total += combineNums[k]
   }
-  
-  function combineFunction(num) {
-    console.log('Passed Num =',num);
-  }
-  }}  
+  console.log(total)
+}
