@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kks Portal</title>
+    <link rel="stylesheet" href="website.css">
+    <script defer src="website.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+<div id="content">
+<div class="top">
+    <header class="top_header_main">KKS Apps</header>
+</div>
+<div class="mid"> 
+    <div class="mid_navigation_card" v-for="link in links"> 
+        <button  @click="navigateUser(link.link)" class="nav_link">{{link.name}}</button>
+    </div>
+</div>
+
+
+</div>
+</body>
+</html>
