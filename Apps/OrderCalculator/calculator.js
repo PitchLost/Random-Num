@@ -84,17 +84,31 @@ function calculate() {
   console.log(label)
 
   // Prepare the HTML object
-  const prev_calcsDOM = document.getElementById('prev-calcs')
-
   let newObject = document.createElement('div') 
   let labelObject = document.createElement('strong')
   labelObject.innerHTML = label
   let valueObject =  document.createElement('p')
   valueObject.innerHTML = answer
-  
   newObject.append(labelObject)
   newObject.append(valueObject)
-  newObject.classList.add('addedDiv');
+  newObject.classList.add('addedDivs');
   prev_calcs.append(newObject)
+
+
+  let allDivs = document.querySelectorAll('.addedDivs'); // Use '.' before class name
+  console.log(allDivs);
   
-  }}
+  for (let i = 0; i < allDivs.length; i++) {
+    // Use an immediately invoked function expression (IIFE) to capture the current value of `i`
+    (function(index) {
+      allDivs[index].addEventListener('click', function() {
+        combineFunction(5);
+        console.log('Current Item:',allDivs[index]); // Access the correct element using the captured index
+      });
+    })(i); // Pass `i` to the IIFE to capture its value
+  }
+  
+  function combineFunction(num) {
+    console.log(num);
+  }
+  }}  
