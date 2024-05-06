@@ -33,7 +33,7 @@ function generateNum() {
         const local_min = 1; 
         const local_max = 89;
         num = Math.random() * (local_max - local_min) + local_min;
-        chance = '15%'
+        chance = '10%'
     }
     setDisplays()
 }
