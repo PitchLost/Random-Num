@@ -76,24 +76,7 @@ function calculate() {
 
   let answer = eval(textBox.value);
   let label = nameBox.value;
-
-  // Create new elements for the calculation result
-  let newObject = document.createElement('div');
-  let labelObject = document.createElement('strong');
-  labelObject.textContent = label;
-  let valueObject = document.createElement('p');
-  valueObject.textContent = answer;
-
-  newObject.append(labelObject);
-  newObject.append(valueObject);
-  newObject.classList.add('addedDivs');
-  prev_calcs.append(newObject);
-
-  // Add event listener to the new calculation result
-  newObject.addEventListener('click', function() {
-    combineFunction(answer); // Pass the answer as an argument to combineFunction
-    console.log('Current Item:', newObject); // Log the clicked element
-  });
+  createDiv(label, answer)
 }
 
 // Function to handle click on a calculation result
@@ -111,21 +94,28 @@ function combineTotal() {
   console.log(total)
   alert('Total is ' + total)
   
+  createDiv('Combine', total)
+  // Reset the values
+  total = 0
+  combineNums = []
+}
 
-// Create a new <div> element
+
+function createDiv(label, value) { 
+  // Create a new <div> element
 let autoObject = document.createElement('div');
 let autoLabelDOM = document.createElement('strong');
-autoLabelDOM.textContent = 'Combine';
+autoLabelDOM.textContent = label;
 let autoValueDOM = document.createElement('p');
-autoValueDOM.textContent = total; 
+autoValueDOM.textContent = value; 
 autoObject.appendChild(autoLabelDOM);
 autoObject.appendChild(autoValueDOM);
 
 prev_calcs.appendChild(autoObject);
 
-
-
-  // Reset the values
-  total = 0
-  combineNums = []
+ // Add event listener to the new calculation result
+ autoObject.addEventListener('click', function() {
+  combineFunction(value); // Pass the answer as an argument to combineFunction
+  console.log('Current Item:', autoObject); // Log the clicked element
+});
 }
