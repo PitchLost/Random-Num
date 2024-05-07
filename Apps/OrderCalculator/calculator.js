@@ -110,5 +110,22 @@ function combineTotal() {
   }
   console.log(total)
   alert('Total is ' + total)
+  
+
+// Create a new <div> element
+let autoObject = document.createElement('div');
+let autoLabelDOM = document.createElement('strong');
+autoLabelDOM.textContent = 'Combine';
+let autoValueDOM = document.createElement('p');
+autoValueDOM.textContent = total; 
+autoObject.appendChild(autoLabelDOM);
+autoObject.appendChild(autoValueDOM);
+
+prev_calcs.appendChild(autoObject);
+
+
+
+  // Reset the values
   total = 0
+  combineNums = []
 }
