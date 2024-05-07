@@ -109,4 +109,6 @@ function combineTotal() {
     total += combineNums[k]
   }
   console.log(total)
+  alert('Total is ' + total)
+  total = 0
 }

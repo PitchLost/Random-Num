@@ -12,9 +12,7 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 <body id="app">
-    <div id="logoPlugin"> 
-        <img class="logo" src="/Assets/KKS_LOGO.png">
-    </div>
+
     
 
     <!-- Calculator Model -->
@@ -65,7 +63,18 @@
                 </div>
     </div>
     </form>
-    <button id="combineBtn" onclick="combineTotal()">Combine selected</button>
+    <div id="controlBtns">
+    <button  class="controlBtn" id="combineBtn" onclick="combineTotal()">Combine selected</button>
+    <button  class="controlBtn" id="resetBtn" onclick="resetTotal()">Unselect all</button>
+    <button  class="controlBtn" id="clearBtn" onclick="clearAll()">Clear all previous</button>
+    </div>
+    <div id="instructions"> 
+        <p> 
+            Enter calculations using the calculator to the left. It will store each number and label in the section below. When you have added for example a 
+            mini smg order worth 1,500,000, and a AP order worth 2,500,000, and you need to combine the two, click on each one of them and then press the 
+            combine button on the far left. It will then combine these numbers and add it the the previous calculations.
+        </p>
+    </div>
 </div>
 <div class="mid"> 
     <div id="prev-calcs"> 

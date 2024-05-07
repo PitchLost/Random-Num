@@ -13,7 +13,7 @@ body {
     height: 30vh;
     width: 15vw;
     background-color: red;
-    
+    margin-top: 1vh;
 }
 /* Calc buttons div */
 #calc-buttons { 
