@@ -76,7 +76,7 @@ function calculate() {
 
   let answer = eval(textBox.value);
   let label = nameBox.value;
-  createDiv(label, answer)
+  createDiv(label, answer, 'addedDivs')
 }
 
 // Function to handle click on a calculation result
@@ -94,14 +94,14 @@ function combineTotal() {
   console.log(total)
   alert('Total is ' + total)
   
-  createDiv('Combine', total)
+  createDiv('Combine', total, 'addedDivs')
   // Reset the values
   total = 0
   combineNums = []
 }
 
 
-function createDiv(label, value) { 
+function createDiv(label, value, HTMLClass) { 
   // Create a new <div> element
 let autoObject = document.createElement('div');
 let autoLabelDOM = document.createElement('strong');
@@ -110,12 +110,35 @@ let autoValueDOM = document.createElement('p');
 autoValueDOM.textContent = value; 
 autoObject.appendChild(autoLabelDOM);
 autoObject.appendChild(autoValueDOM);
-
+autoObject.className = HTMLClass
 prev_calcs.appendChild(autoObject);
 
  // Add event listener to the new calculation result
- autoObject.addEventListener('click', function() {
+ autoObject.addEventListener('click', e => {
+  let currentDOM = e.target
+  currentDOM.style.backgroundColor = 'aliceblue';
   combineFunction(value); // Pass the answer as an argument to combineFunction
   console.log('Current Item:', autoObject); // Log the clicked element
 });
+}
+
+
+// Reset function
+function resetAll() { 
+console.log('resetAll')
+total = 0 
+combineNums = []
+// Select all elements with class 'addedDivs'
+let tempDivs = document.querySelectorAll('.addedDivs');
+
+// Loop through each matched element
+tempDivs.forEach(div => {
+    // Apply the background color style to each element
+    div.style.backgroundColor = 'beige';
+    console.log(div)
+});
+}
+
+function clearAll() { 
+prev_calcs.innerHTML = ''
 }
