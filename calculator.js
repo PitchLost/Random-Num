@@ -1,3 +1,9 @@
+document.addEventListener('DOMContentLoaded', _ => { 
+  console.log('DOM loaded!')
+  
+})
+
+
 // Buttons: 
 const one = document.getElementById('one');
 one.value = 1;
@@ -98,6 +104,7 @@ function combineTotal() {
   // Reset the values
   total = 0
   combineNums = []
+  resetAll()
 }
 
 

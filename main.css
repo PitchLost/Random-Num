@@ -43,17 +43,26 @@
     position: absolute;
     left: .5vw;
     top: 2vh;
+    
 }
 .controlBtn { 
     width: 40vw;
     height: 10vh;
     margin-bottom: 2vh;
+    font-size: 8mm;
 }
+
 
 #instructions p { 
     position: absolute;
     top: 1vh;
     left:60vw;
     margin-right: 5vw;
+    font-size: 6mm;
     
+}
+#warningMSG { 
+    position: absolute;
+    left: 0;
+    top: 40vh;
 }

@@ -10,7 +10,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 30vh;
+    height: 34vh;
     width: 15vw;
     background-color: red;
     margin-top: 1vh;
@@ -27,6 +27,9 @@ body {
     width: 3vw;
     height: 5vh;
     margin: 1px;
+}
+#calc-buttons button:hover { 
+    background-color: aliceblue;
 }
 
 /* Input styling */
