@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Calculator</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="calculator.css">
+    <script defer src="calculator.js"></script>
+   
+</head>
+<body id="app">
+
+    
+
+    <!-- Calculator Model -->
+<div class="top">
+
+    <form id="calcForm"> 
+        <div id="calcDiv"> 
+            <input id="name-box" placeholder="Label" autocomplete="off" > <!-- This is where you can enter the name of the equation-->
+            <input id="text-box" placeholder="0" autocomplete="off" > <!-- This is the main text box for the calculator-->
+            
+    
+            <!-- Calc Buttons -->
+    
+            <div id="calc-buttons"> 
+               <div id="row-1"> <!-- This is the first row of the calc buttons-->
+    
+                <button id="one" onclick="add_number(this)">1</button> <!-- 1 -->
+                <button id="two" onclick="add_number(this)">2</button> <!-- 2 -->
+                <button id="three" onclick="add_number(this)">3</button> <!-- 3-->
+                <button id="plus" onclick="add_number(this)">+</button> <!-- + operator-->
+        
+               </div>
+    
+               <div id="row-2"><!-- This is the second row of the calc buttons-->
+                <button id="four" onclick="add_number(this)">4</button> <!-- 1 -->
+                <button id="five" onclick="add_number(this)">5</button> <!-- 2 -->
+                <button id="six" onclick="add_number(this)">6</button> <!-- 3-->
+                <button id="divide" onclick="add_number(this)">÷</button> <!-- Divide operator-->
+    
+               </div>
+    
+               <div id="row-3"> <!-- This is the third and last row of the calc buttons-->
+    
+                <button id="seven" onclick="add_number(this)">7</button> <!-- 7-->
+                <button id="eight" onclick="add_number(this)">8</button> <!-- 8-->
+                <button id="nine" onclick="add_number(this)">9</button>  <!-- 9-->
+                <button id="multiply" onclick="add_number(this)">*</button> <!-- X operator -->
+    
+               <div id="row-4"> <!-- This is the operator Row-->
+                <button id="minus" onclick="add_number(this)">-</button> <!-- Minus operator-->
+                <button id="zero" onclick="add_number(this)">0</button> <!-- 0-->
+                <button id="delete" onclick="clear_number()">D</button> <!-- Backspace (Needs to be changed to a actual delete button) -->
+                <button id="submit" onclick="calculate()">=</button> <!-- Solve-->
+                
+    
+                </div>
+            </div>
+                </div>
+    </div>
+    </form>
+    <div id="controlBtns">
+    <button  class="controlBtn" id="combineBtn" onclick="combineTotal()">Combine selected</button>
+    <button  class="controlBtn" id="resetBtn" onclick="resetAll()">Unselect all</button>
+    <button  class="controlBtn" id="clearBtn" onclick="clearAll()">Clear all previous</button>
+    </div>
+    <div id="instructions"> 
+        <p> 
+            Enter calculations using the calculator to the left. It will store each number and label in the section below. When you have added for example a 
+            mini smg order worth 1,500,000, and a AP order worth 2,500,000, and you need to combine the two, click on each one of them and then press the 
+            combine button on the far left. It will then combine these numbers and add it the the previous calculations.
+        </p>
+    </div>
+</div>
+<div class="mid"> 
+    <div id="prev-calcs"> 
+        <!-- Content will be added via javascript -->
+    </div>
+</div>
+</div>
+</body>
+</html>
