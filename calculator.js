@@ -91,20 +91,22 @@ function combineFunction(num) {
   combineNums.push(num)
 }
 
+
+// Add the total when the button is pressed to combine the numbers
 function combineTotal() { 
   console.log(combineNums)
-  total = 0 
+  total = 0 // init the total var back to 0
   for (let k = 0; k < combineNums.length; k++) { 
     total += combineNums[k]
   }
   console.log(total)
   alert('Total is ' + total)
-  
+
   createDiv('Combine', total, 'addedDivs')
   // Reset the values
   total = 0
   combineNums = []
-  resetAll()
+  resetAll() 
 }
 
 
@@ -127,6 +129,7 @@ prev_calcs.appendChild(autoObject);
   combineFunction(value); // Pass the answer as an argument to combineFunction
   console.log('Current Item:', autoObject); // Log the clicked element
 });
+messageBox('New item created!')
 }
 
 
@@ -144,8 +147,11 @@ tempDivs.forEach(div => {
     div.style.backgroundColor = 'beige';
     console.log(div)
 });
+messageBox('Unselected all!')
 }
 
 function clearAll() { 
 prev_calcs.innerHTML = ''
+messageBox('Cleared succesfully!')
 }
+

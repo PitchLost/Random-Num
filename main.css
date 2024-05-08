@@ -66,3 +66,20 @@
     left: 0;
     top: 40vh;
 }
+
+#message-box { 
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 5vh;
+    background-color: beige;
+    display: flex;
+    justify-content: center;
+    visibility:hidden;
+}
+#message-box strong { 
+    font-size: 8mm;
+    color: black;
+
+}
