@@ -100,8 +100,6 @@ function combineTotal() {
     total += combineNums[k]
   }
   console.log(total)
-  alert('Total is ' + total)
-
   createDiv('Combine', total, 'addedDivs')
   // Reset the values
   total = 0
