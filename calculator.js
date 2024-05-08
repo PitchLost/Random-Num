@@ -1,10 +1,10 @@
+// On page load
 document.addEventListener('DOMContentLoaded', _ => { 
   console.log('DOM loaded!')
-  
 })
 
 
-// Buttons: 
+// Variables: 
 const one = document.getElementById('one');
 one.value = 1;
 const two = document.getElementById('two');
@@ -33,35 +33,30 @@ let textBoxValue = textBox.value;
 // Add a running total for the calculation: 
 let new_calc = 0
 textBoxValue = new_calc;
-
-// Operators: 
-
 const multiply = document.getElementById('multiply')
 multiply.value = '*'
-
 const plus = document.getElementById('plus')
 plus.value = '+'
-
 const minus = document.getElementById('minus')
 minus.value = '-'
-
 const divide = document.getElementById('divide')
 divide.value = '/'
-
 const del = document.getElementById('delete')
- del.value = ' ' 
-
- // Prev-calcs HTML elements
-
+del.value = ' ' 
 const prev_calcs = document.getElementById('prev-calcs') // Get the previous calculations HTML div
 const nameBox = document.getElementById('name-box')
-
-
 let combineNums = []
 
-// Add a number to the text box
+// Functions: 
 
-// Prevent Defualt Submission
+function formatNum(num) { 
+  console.log('Unformatted number = ',num)
+  num = Math.floor(num)
+  console.log('Formatted number = ', num)
+  return num;
+}
+
+// Add a number to the text box
 calcForm.addEventListener('submit',e => { 
     e.preventDefault()
 })
@@ -81,6 +76,7 @@ function calculate() {
   }
 
   let answer = eval(textBox.value);
+  answer = formatNum(answer)
   let label = nameBox.value;
   createDiv(label, answer, 'addedDivs')
 }
