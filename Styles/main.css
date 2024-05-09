@@ -1,0 +1,111 @@
+body { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: black;
+}
+
+#top-header-main { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+}
+header { 
+    font-size: 12mm;
+    color: white;
+}
+h2 { 
+    font-size: 9mm;
+    color: white;
+}
+/* Ticket Create:  */
+#top-div-create { 
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+#create-hidden { 
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10em;
+}
+#create-hidden input, textarea { 
+    width: 80vw;
+    min-height: 10vh;
+    max-height: fit-content;
+    height: auto;
+    margin-bottom: 10vh;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: gray;
+    font-size: 6mm;
+}
+::placeholder { 
+    color: gray;
+}
+
+button { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: gray;
+    color: gray;
+}
+
+.info { 
+    border-radius: 5px;
+    border-style: solid;
+    border-color: gray;
+    margin-bottom: 5vh;
+}
+
+#ticket-info-1 { 
+    width: 80vw;;
+    height: fit-content;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.info p { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10vw;
+    margin-left: 10vw;
+    
+}
+.info li { 
+    margin-bottom: 3vh;
+    display: flex;
+    justify-content: center;
+}
+
+#submit { 
+    background-color: rgb(0,240,0);
+    color: white;
+    height: 5vh;
+    font-size: 5mm;
+}
+#create-button { 
+    width: 80vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+    background-color: rgb(0,240,0);
+    color: white;
+    font-size: 5mm;
+    margin-left: 0;
+    margin-bottom: 5vh;
+}

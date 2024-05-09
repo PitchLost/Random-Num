@@ -3,31 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>kks Portal</title>
-    <link rel="stylesheet" href="website.css">
-    <script defer src="website.js"></script>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <link rel="icon" href="/Assets/KKS_LOGO.png">
-    <link rel="stylesheet" href="/Assets/logo.css">
+    <title>Bug Report + Suggestions</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="/Styles/main.css">
+    <link rel="stylesheet" href="/Styles/reports.css">
+    <!-- Scripts -->
+    <script defer src="/Scripts/client.js"></script>
+    <script defer src="/Scripts/data.js"></script>
+    <script defer src="/Scripts/remote.js"></script>
+    <script defer src="/Scripts/site.js"></script>
+    <!-- CDN -->
 </head>
 <body>
-<div id="content">
-
-    
-<div id="logoPlugin"> 
-    <img class="logo" src="/Assets/KKS_LOGO.png">
-</div>
-
-<div class="top">
-    <header class="top_header_main">KKS Apps</header>
-</div>
-<div class="mid"> 
-    <div class="mid_navigation_card" v-for="link in links"> 
-        <button  @click="navigateUser(link.link)" class="nav_link">{{link.name}}</button>
+<div class="top"> 
+    <button id="create-button" onclick="windowOpen()">Open new ticket</button>
     </div>
-</div>
+    
+<div class="mid">
+    <header>Your tickets</header>
+         <div id="tickets">
+            <div> 
+                <strong>Ticket Title:</strong>
+                <p>Bug on order calculator</p>
+            </div>
+            <div> 
+                <strong>Ticket Title:</strong>
+                <p>Bug on sheets</p>
+            </div>
+         </div>
 
-
 </div>
+    
 </body>
 </html>
