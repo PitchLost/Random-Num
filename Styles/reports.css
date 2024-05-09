@@ -31,9 +31,15 @@
     flex-direction: column;
 }
 
+
 #tickets strong, p { 
     color: white;
     display: flex;
     justify-content: center;
     font-size: 7mm;
+}
+
+/* Hovers:  */
+#tickets div:hover { 
+    border-color: lightgray;
 }
