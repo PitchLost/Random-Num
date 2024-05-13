@@ -1,14 +1,5 @@
 // Variables
 const endpoint = 'http://localhost:3300/';
-
-let dataToSend = {
-    title: '',
-    name: '',
-    discord: '',
-    description: '',
-    reproduction: ''
-};
-
 let ticketsDOM;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -94,6 +85,10 @@ function createTicketElement(ticket) {
 
     const ticketContainer = document.createElement('div');
     ticketContainer.classList.add('ticket');
+    const delBtn = document.createElement('button')
+    delBtn.innerHTML = 'Close'
+    delBtn.classList.add('delBtn')
+    ticketContainer.append(delBtn)
 
     properties.forEach(({ label, value }) => {
         const labelElement = document.createElement('strong');
@@ -106,5 +101,6 @@ function createTicketElement(ticket) {
         ticketContainer.appendChild(textElement);
     });
 
+    addDel()
     return ticketContainer;
 }

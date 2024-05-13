@@ -35,3 +35,8 @@ async function sendData() {
         console.error('Error creating ticket:', error.message);
     }
 }
+
+
+async function delTicket(ticket) { 
+    console.log('Ticket to delete =',ticket)
+}

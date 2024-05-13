@@ -61,3 +61,21 @@
     justify-content: center;
     margin-bottom: 2vh;
 }
+.ticket { 
+    display: flex;
+    justify-content: center;
+
+}
+.ticket button { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    margin-bottom: 5vh;
+    font-size: 7mm;
+    color: white;
+    z-index: 999;
+}
+.ticket button:hover { 
+    background-color: rgb(240, 0, 0);
+}
