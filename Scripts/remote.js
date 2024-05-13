@@ -52,10 +52,9 @@ async function fetchAndDisplayTickets() {
         if (!response.ok) {
             throw new Error('Internal server error. Check your network and try again.');
         }
-
         console.log('Data received from server successfully.');
-
         const ticketsData = await response.json();
+        console.log(ticketsData)
         renderTickets(ticketsData);
 
     } catch (error) {
@@ -76,12 +75,13 @@ function renderTickets(tickets) {
 // Helper function to create a ticket element
 function createTicketElement(ticket) {
     const properties = [
-        { label: 'Title', value: ticket.title },
-        { label: 'Name', value: ticket.name },
-        { label: 'Discord', value: ticket.discord },
-        { label: 'Description', value: ticket.description },
-        { label: 'Reproduction Steps', value: ticket.reproduction }
+        { label: 'Title', value: ticket.title, class: 'title' },
+        { label: 'Name', value: ticket.name, class: 'name' },
+        { label: 'Discord', value: ticket.discord, class: 'discord' },
+        { label: 'Description', value: ticket.description, class: 'desc' },
+        { label: 'Reproduction Steps', value: ticket.reproduction, class: 'repro' }
     ];
+    
 
     const ticketContainer = document.createElement('div');
     ticketContainer.classList.add('ticket');
@@ -90,15 +90,21 @@ function createTicketElement(ticket) {
     delBtn.classList.add('delBtn')
     ticketContainer.append(delBtn)
 
-    properties.forEach(({ label, value }) => {
+    properties.forEach(({ label, value, HTMLclass }) => {
         const labelElement = document.createElement('strong');
         labelElement.textContent = `${label}: `;
 
         const textElement = document.createElement('p');
+        textElement.classList.add(HTMLclass)
         textElement.textContent = value;
+        
 
         ticketContainer.appendChild(labelElement);
         ticketContainer.appendChild(textElement);
+
+        // Logging 
+        console.log(labelElement, textElement)
+        console.log(label, value)
     });
 
     addDel()

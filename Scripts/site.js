@@ -1,3 +1,15 @@
+// Variables:
+
+
+
+
+
+// Functions:
+
+function windowOpen() { 
+    window.open('createticket.html')
+}
+
 function addDel() {
     const delBtns = document.querySelectorAll('.delBtn');
 
@@ -29,7 +41,14 @@ function handleDeleteTicket(ticket) {
     if (ticket) {
         // Perform deletion logic (e.g., remove ticket element from DOM)
         console.log(ticket);
+        const testHTML = ticket.querySelector('.title')
+        console.log(testHTML)
     } else {
         console.error('Ticket element not found');
     }
 }
+
+
+// Event listeners
+
+
