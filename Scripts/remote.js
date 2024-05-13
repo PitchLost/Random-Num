@@ -1,41 +1,32 @@
 // Variables
-let data_to_send = { 
-    title: '', 
-    name: '', 
+const endpoint = 'http://localhost:3300/';
+
+let dataToSend = {
+    title: '',
+    name: '',
     discord: '',
-    description: '', 
+    description: '',
     reproduction: ''
-}
+};
 
-const titleDOM = document.getElementById('ticket-label')
-const nameDOM = document.getElementById('ticket-user')
-const discordDOM = document.getElementById('ticket-discord')
-const descDOM = document.getElementById('ticket-desc')
-const reproductionDOM = document.getElementById('ticket-reproduction')
-const ticketsDOM = document.getElementById('tickets')
-const newTicket = document.createElement('div')
+let ticketsDOM;
 
-const titleText = 'Title'; 
-const nameText = 'Name'; 
-const discordText = 'Discord'
-const descText = 'Description'
-const reproText = 'Reproduction Text'
+document.addEventListener('DOMContentLoaded', () => {
+    ticketsDOM = document.getElementById('tickets');
+    console.log('ticketsDOM:', ticketsDOM); // Check if ticketsDOM is defined
 
-const headers = ['Ticket Title', 'Name', 'Discord', 'Description', 'Reproduction Steps']
+    // Call fetch and display tickets only if ticketsDOM exists
+    if (ticketsDOM) {
+        fetchAndDisplayTickets();
+    }
+    initConnection( )
+});
 
 
-// On page load: 
-document.addEventListener('DOMContentLoaded', _ => { 
-    init_connection()
-})
-
-
-// Functions
-
-
-async function init_connection() {
+// Function to initialize connection with the server
+async function initConnection() {
     try {
-        const response = await fetch('http://localhost:3300/connect', {
+        const response = await fetch(endpoint + 'connect', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -46,49 +37,25 @@ async function init_connection() {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
-        // Use response.text() to get the response body as text
         const responseData = await response.text();
+        console.log('Connected to server:', responseData);
 
-        // Log the response data to the console
-        console.log(responseData);
+        // Fetch and display tickets after successful connection
+        await fetchAndDisplayTickets();
+
     } catch (error) {
-        // Handle fetch errors or network errors
         console.error('Error connecting to server:', error.message);
     }
 }
 
-
-async function sendData() { 
-
-    data_to_send = { 
-        title: titleDOM.value, 
-        name: nameDOM.value, 
-        discord: discordDOM.value, 
-        description: descDOM.value, 
-        reproduction: reproductionDOM.value 
-    }
-
-
-    console.log(data_to_send)
-    const response = await fetch('http://localhost:3300/ticketCreate', { 
-        body: JSON.stringify(data_to_send), 
-        method: 'POST', 
-        headers: { 
-            'Content-Type': 'application/json'
-        }
-
-    })
-    console.log(response)
-
-}
-
-async function getTickets() {
-    console.log('Getting data from database');
-
+// Function to fetch tickets from the server and display them
+async function fetchAndDisplayTickets() {
     try {
-        const response = await fetch('http://localhost:3300/getTickets', {
+        const response = await fetch(endpoint + 'getTickets', {
             method: 'GET',
-            headers: { 'Content-Type': 'application/json' }
+            headers: {
+                'Content-Type': 'application/json'
+            }
         });
 
         if (!response.ok) {
@@ -97,61 +64,47 @@ async function getTickets() {
 
         console.log('Data received from server successfully.');
 
-        const db_items = await response.json();
-        console.log('Data from database:', db_items);
-
-        // Clear previous content in ticketContainer
-        ticketsDOM.innerHTML = '';
-
-        // Iterate through each ticket and create a new display element
-        db_items.forEach(ticket => {
-            const ticketContainer = document.createElement('div');
-            ticketContainer.classList.add('ticket');
-
-            // Display ticket properties in a structured format
-            const ticketTitle = document.createElement('header');
-            ticketTitle.textContent = ticket.title;
-
-            const nameLabel = document.createElement('strong');
-            nameLabel.textContent = 'Name: ';
-            const nameText = document.createElement('p');
-            nameText.textContent = ticket.name
-            console.log('Name:',ticket.name)
-            
-
-            const discordLabel = document.createElement('strong');
-            discordLabel.textContent = 'Discord: ';
-            const discordText = document.createElement('p');
-            discordText.textContent = ticket.discord
-            console.log('Discord:',ticket.discord)
-
-            const descLabel = document.createElement('strong');
-            descLabel.textContent = 'Description: ';
-            const descText = document.createElement('p');
-            descText.textContent = ticket.description
-
-            const reproLabel = document.createElement('strong');
-            reproLabel.textContent = 'Reproduction Steps: ';
-            const reproText = document.createElement('p');
-            reproText.textContent = ticket.reproduction
-
-            ticketContainer.appendChild(ticketTitle);
-            ticketContainer.appendChild(nameLabel)
-            ticketContainer.append(nameText)
-            ticketContainer.appendChild(discordLabel)
-            ticketContainer.append(discordText)
-            ticketContainer.appendChild(descLabel)
-            ticketContainer.append(descText)
-            ticketContainer.appendChild(reproLabel)
-            ticketContainer.append(reproText)
-            ticketsDOM.append(ticketContainer)
-
-
-
-
-        });
+        const ticketsData = await response.json();
+        renderTickets(ticketsData);
 
     } catch (error) {
         console.error('Error fetching or processing data:', error.message);
     }
+}
+
+// Function to render tickets on the DOM
+function renderTickets(tickets) {
+    ticketsDOM.innerHTML = ''; // Clear previous content
+
+    tickets.forEach(ticket => {
+        const ticketElement = createTicketElement(ticket);
+        ticketsDOM.appendChild(ticketElement);
+    });
+}
+
+// Helper function to create a ticket element
+function createTicketElement(ticket) {
+    const properties = [
+        { label: 'Title', value: ticket.title },
+        { label: 'Name', value: ticket.name },
+        { label: 'Discord', value: ticket.discord },
+        { label: 'Description', value: ticket.description },
+        { label: 'Reproduction Steps', value: ticket.reproduction }
+    ];
+
+    const ticketContainer = document.createElement('div');
+    ticketContainer.classList.add('ticket');
+
+    properties.forEach(({ label, value }) => {
+        const labelElement = document.createElement('strong');
+        labelElement.textContent = `${label}: `;
+
+        const textElement = document.createElement('p');
+        textElement.textContent = value;
+
+        ticketContainer.appendChild(labelElement);
+        ticketContainer.appendChild(textElement);
+    });
+
+    return ticketContainer;
 }
