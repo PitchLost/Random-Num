@@ -5,3 +5,4 @@ const prevTickets = document.getElementById('tickets')
 function windowOpen() { 
 window.open('createticket.html')
 }
+

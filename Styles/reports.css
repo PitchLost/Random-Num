@@ -36,10 +36,28 @@
     color: white;
     display: flex;
     justify-content: center;
+    align-items: center;
     font-size: 7mm;
+    margin-bottom: 0vh;
+    justify-content: center;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    margin-bottom: 1vh;
 }
+
+#tickets p { 
+    color: gray;
+
+}
+
 
 /* Hovers:  */
 #tickets div:hover { 
     border-color: lightgray;
+}
+
+.mid header { 
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2vh;
 }
