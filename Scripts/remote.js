@@ -1,9 +1,12 @@
+
+
 // Variables
 const endpoint = 'http://localhost:3300/';
 let ticketsDOM;
 let responseData;
 let ticketsData; 
 let ticketsArray = []
+let counter = 0
 
 document.addEventListener('DOMContentLoaded', () => {
     ticketsDOM = document.getElementById('tickets');
@@ -64,16 +67,13 @@ async function fetchAndDisplayTickets() {
 // Function to render tickets on the DOM
 function renderTickets(tickets) {
     ticketsDOM.innerHTML = ''; // Clear previous content
-
-    let tempCount = 0
     tickets.forEach(ticket => {
         const ticketElement = createTicketElement(ticket);
         ticketsDOM.appendChild(ticketElement);
-        tempCount++ 
-        console.log(tempCount)
+
 
     });
-    console.log('Finished rendering tickets', '\n', ticketsArray)
+
     addDel() // Add the delete button event listeners
 }
 
@@ -84,7 +84,8 @@ function createTicketElement(ticket) {
         { label: 'Name', value: ticket.name, class: 'name' },
         { label: 'Discord', value: ticket.discord, class: 'discord' },
         { label: 'Description', value: ticket.description, class: 'desc' },
-        { label: 'Reproduction Steps', value: ticket.reproduction, class: 'repro' }
+        { label: 'Reproduction Steps', value: ticket.reproduction, class: 'repro' },
+        { label: 'Ticket ID', value: ticket.id, class: 'db-id', data_id: 'db-id'}
     ];
     
 
@@ -95,13 +96,17 @@ function createTicketElement(ticket) {
     delBtn.classList.add('delBtn')
     ticketContainer.append(delBtn)
 
-    properties.forEach(({ label, value, HTMLclass }) => {
+    properties.forEach(({ label, value, HTMLclass, data_id }) => {
         const labelElement = document.createElement('strong');
         labelElement.textContent = `${label}: `;
 
         const textElement = document.createElement('p');
         textElement.classList.add(HTMLclass)
         textElement.textContent = value;
+        if (data_id) { 
+            textElement.dataset.id = data_id
+           
+        }
         
 
         ticketContainer.appendChild(labelElement);
@@ -110,13 +115,13 @@ function createTicketElement(ticket) {
         
     });
     ticketsArray.push(ticketContainer)
+    counter++
+    console.log('Counter =',counter)
     return ticketContainer;
 }
 
 async function removeTicketFromDb(idx) { 
     console.log('ticket to remove =',idx)
-    idx++
-    console.log(idx)
     const requestData = {
         idx: idx
       };
@@ -131,5 +136,6 @@ async function removeTicketFromDb(idx) {
         }
     })
     console.log(response.text())
+    ticketsArray = []
     fetchAndDisplayTickets()
 }
