@@ -1,15 +1,14 @@
 // Variables
 const endpoint = 'http://localhost:3300/';
 let ticketsDOM;
+let responseData;
+let ticketsData; 
+let ticketsArray = []
 
 document.addEventListener('DOMContentLoaded', () => {
     ticketsDOM = document.getElementById('tickets');
-    console.log('ticketsDOM:', ticketsDOM); // Check if ticketsDOM is defined
-
     // Call fetch and display tickets only if ticketsDOM exists
-    if (ticketsDOM) {
-        fetchAndDisplayTickets();
-    }
+    
     initConnection( )
 });
 
@@ -28,8 +27,9 @@ async function initConnection() {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
-        const responseData = await response.text();
+        responseData = await response.text();
         console.log('Connected to server:', responseData);
+        
 
         // Fetch and display tickets after successful connection
         await fetchAndDisplayTickets();
@@ -52,10 +52,9 @@ async function fetchAndDisplayTickets() {
         if (!response.ok) {
             throw new Error('Internal server error. Check your network and try again.');
         }
-        console.log('Data received from server successfully.');
-        const ticketsData = await response.json();
-        console.log(ticketsData)
+        ticketsData = await response.json();
         renderTickets(ticketsData);
+        console.log('Tickets Fetched:',ticketsData)
 
     } catch (error) {
         console.error('Error fetching or processing data:', error.message);
@@ -66,10 +65,16 @@ async function fetchAndDisplayTickets() {
 function renderTickets(tickets) {
     ticketsDOM.innerHTML = ''; // Clear previous content
 
+    let tempCount = 0
     tickets.forEach(ticket => {
         const ticketElement = createTicketElement(ticket);
         ticketsDOM.appendChild(ticketElement);
+        tempCount++ 
+        console.log(tempCount)
+
     });
+    console.log('Finished rendering tickets', '\n', ticketsArray)
+    addDel() // Add the delete button event listeners
 }
 
 // Helper function to create a ticket element
@@ -101,12 +106,30 @@ function createTicketElement(ticket) {
 
         ticketContainer.appendChild(labelElement);
         ticketContainer.appendChild(textElement);
-
-        // Logging 
-        console.log(labelElement, textElement)
-        console.log(label, value)
+        
+        
     });
-
-    addDel()
+    ticketsArray.push(ticketContainer)
     return ticketContainer;
+}
+
+async function removeTicketFromDb(idx) { 
+    console.log('ticket to remove =',idx)
+    idx++
+    console.log(idx)
+    const requestData = {
+        idx: idx
+      };
+      
+   
+
+    const response = await fetch(endpoint + 'removeTicket', { 
+        method: 'POST', 
+        body: JSON.stringify(requestData), 
+        headers: { 
+            'Content-Type': 'application/json'
+        }
+    })
+    console.log(response.text())
+    fetchAndDisplayTickets()
 }

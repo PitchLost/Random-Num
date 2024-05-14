@@ -12,9 +12,10 @@ function windowOpen() {
 
 function addDel() {
     const delBtns = document.querySelectorAll('.delBtn');
-
+    console.log('Adding delete buttons', delBtns)
     delBtns.forEach(button => {
         button.addEventListener('click', e => {
+
             // Prevent the default behavior of the button (e.g., form submission)
             e.preventDefault();
 
@@ -39,10 +40,13 @@ function handleDeleteTicket(ticket) {
     console.log('Deleting: ', ticket);
 
     if (ticket) {
-        // Perform deletion logic (e.g., remove ticket element from DOM)
-        console.log(ticket);
-        const testHTML = ticket.querySelector('.title')
-        console.log(testHTML)
+        // Use a for loop to iterate through each ticket
+       for (let i = 0; i < ticketsArray.length; i++) { 
+        if (ticketsArray[i] == ticket) { 
+            console.log('Ticket found at index:',i)
+            removeTicketFromDb(i)
+        } 
+       }
     } else {
         console.error('Ticket element not found');
     }
