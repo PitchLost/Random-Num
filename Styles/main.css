@@ -115,3 +115,41 @@ button {
 #create-button:hover { 
     background-color: rgb(0,255,0);
 }
+
+#viewTicket { 
+    position: fixed;
+    top: 0vh;
+    left: 0vh;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    z-index: 999;
+    display: none;
+    color: white;
+    flex-direction: column;
+    justify-content: center;
+}
+#viewTicket div { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+}
+#viewTicket button { 
+    width: 100vw;
+}
+#viewTicket strong { 
+    font-size: 8mm;
+    display: flex;
+
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    flex-direction: column;
+}
+#viewTicket p { 
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}

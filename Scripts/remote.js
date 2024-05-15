@@ -82,12 +82,12 @@ function renderTickets(tickets) {
 // Helper function to create a ticket element
 function createTicketElement(ticket) {
     const properties = [
-        { label: 'Title', value: ticket.title, HTMLclass: 'title' },
-        { label: 'Name', value: ticket.name, HTMLclass: 'name' },
-        { label: 'Discord', value: ticket.discord, HTMLclass: 'discord' },
-        { label: 'Description', value: ticket.description, HTMLclass: 'desc' },
-        { label: 'Reproduction Steps', value: ticket.reproduction, HTMLclass: 'repro' },
-        { label: 'Ticket ID', value: ticket.id, HTMLclass: 'db-id', data_id: 'db-id'}
+        { label: 'Title', value: ticket.title, HTMLclass: 'title', labelClass: 'titleLabel' },
+        { label: 'Name', value: ticket.name, HTMLclass: 'name', labelClass: 'titleLabel' },
+        { label: 'Discord', value: ticket.discord, HTMLclass: 'discord', labelClass: 'titleLabel' },
+        { label: 'Description', value: ticket.description, HTMLclass: 'desc', labelClass: 'titleLabel' },
+        { label: 'Reproduction Steps', value: ticket.reproduction, HTMLclass: 'repro', labelClass: 'titleLabel' },
+        { label: 'Ticket ID', value: ticket.id, HTMLclass: 'db-id', data_id: 'db-id', labelClass: 'titleLabel'}
     ];
     
 
@@ -98,10 +98,10 @@ function createTicketElement(ticket) {
     delBtn.classList.add('delBtn')
     ticketContainer.append(delBtn)
 
-    properties.forEach(({ label, value, HTMLclass, data_id }) => {
+    properties.forEach(({ label, value, HTMLclass, data_id, labelClass }) => {
         const labelElement = document.createElement('strong');
         labelElement.textContent = `${label}: `;
-        labelElement.classList.add(HTMLclass)
+        labelElement.classList.add(labelClass)
 
         const textElement = document.createElement('p');
         textElement.classList.add(HTMLclass)

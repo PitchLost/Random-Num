@@ -29,6 +29,7 @@
     margin-top: 2vh;
     margin-bottom: 2vh;
     flex-direction: column;
+    z-index: 100;
 }
 
 
@@ -54,6 +55,11 @@
 /* Hovers:  */
 #tickets div:hover { 
     border-color: lightgray;
+}
+
+.desc, .discord, .repro, .titleLabel { 
+    position:absolute;
+    visibility: hidden;
 }
 
 .mid header { 
