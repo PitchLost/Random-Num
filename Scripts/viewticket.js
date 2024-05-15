@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to display ticket details
     function viewTicket(ticket) {
         windowOpen = true;
+        ticketWindow.style.visibility = 'visible';
         console.log('View ticket', '\n', ticket);
 
         // Example: Extracting details from ticket element
@@ -38,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Show ticketWindow
 
-            ticketWindow.style.display = 'flex !important';
+            
             
             console.log('Setting window to visible')
         }
@@ -55,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close ticketWindow when clicking outside of it
     document.addEventListener('click', e => {
         if (windowOpen && !ticketWindow.contains(e.target)) {
-            ticketWindow.style.display = 'none';
+            // ticketWindow.style.display = 'none';
             windowOpen = false;
         }
     });
