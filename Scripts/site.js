@@ -17,9 +17,9 @@ function addDel() {
         button.addEventListener('click', e => {
             e.preventDefault();
 
-            const confirmDelete = confirm('Are you sure you want to delete this ticket?');
             
-            if (confirmDelete) {
+            
+            
                 const ticket = button.parentElement; // Assuming the parent element is the ticket container
 
                 // Retrieve the data-id attribute value from the ticket element
@@ -27,8 +27,8 @@ function addDel() {
 
                 // Stop further propagation of the click event to prevent multiple executions
                 e.stopImmediatePropagation();
-            }
-        });
+            
+        })
     });
 }
 

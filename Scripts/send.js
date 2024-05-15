@@ -47,6 +47,7 @@ async function sendData() {
     } catch (error) {
         console.error('Error creating ticket:', error.message);
     }
+    alert('Ticket created!')
 }
 
 

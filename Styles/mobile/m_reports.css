@@ -1,0 +1,31 @@
+/* Media query for screens smaller than or equal to 480px (typical for phones) */
+@media only screen and (max-width: 480px) {
+  
+    body {
+      font-size: 14px; /* Adjust font size for better readability on smaller screens */
+    }
+    #tickets div { 
+        width: 90vw;
+        
+    }
+
+
+.title, .db-id, .delBtn { 
+    visibility: visible;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.title p, .db-id p, .delBtn p { 
+    color: white;
+}
+.discord, .desc, .repro { 
+    visibility: hidden;
+    margin: 0;
+    position: absolute;
+}
+}
+  

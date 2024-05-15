@@ -3,6 +3,7 @@
 // Variables
 const endpoint = 'http://localhost:3300/';
 let ticketsDOM;
+let ticketsMobileDOM;
 let responseData;
 let ticketsData; 
 let ticketsArray = []
@@ -10,6 +11,7 @@ let counter = 0
 
 document.addEventListener('DOMContentLoaded', () => {
     ticketsDOM = document.getElementById('tickets');
+    ticketsMobileDOM = document.querySelector('.section-to-hide')
     // Call fetch and display tickets only if ticketsDOM exists
     
     initConnection( )
@@ -80,12 +82,12 @@ function renderTickets(tickets) {
 // Helper function to create a ticket element
 function createTicketElement(ticket) {
     const properties = [
-        { label: 'Title', value: ticket.title, class: 'title' },
-        { label: 'Name', value: ticket.name, class: 'name' },
-        { label: 'Discord', value: ticket.discord, class: 'discord' },
-        { label: 'Description', value: ticket.description, class: 'desc' },
-        { label: 'Reproduction Steps', value: ticket.reproduction, class: 'repro' },
-        { label: 'Ticket ID', value: ticket.id, class: 'db-id', data_id: 'db-id'}
+        { label: 'Title', value: ticket.title, HTMLclass: 'title' },
+        { label: 'Name', value: ticket.name, HTMLclass: 'name' },
+        { label: 'Discord', value: ticket.discord, HTMLclass: 'discord' },
+        { label: 'Description', value: ticket.description, HTMLclass: 'desc' },
+        { label: 'Reproduction Steps', value: ticket.reproduction, HTMLclass: 'repro' },
+        { label: 'Ticket ID', value: ticket.id, HTMLclass: 'db-id', data_id: 'db-id'}
     ];
     
 
@@ -99,9 +101,11 @@ function createTicketElement(ticket) {
     properties.forEach(({ label, value, HTMLclass, data_id }) => {
         const labelElement = document.createElement('strong');
         labelElement.textContent = `${label}: `;
+        labelElement.classList.add(HTMLclass)
 
         const textElement = document.createElement('p');
         textElement.classList.add(HTMLclass)
+
         textElement.textContent = value;
         if (data_id) { 
             textElement.dataset.id = data_id
